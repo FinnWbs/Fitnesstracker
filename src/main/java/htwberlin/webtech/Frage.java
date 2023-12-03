@@ -9,38 +9,33 @@ public class Frage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String frage;
-    private String Antwort;
+    private String antwort;
     private int playerid;
     public Frage() {}
 
     public Frage(String frage, String antwort, int playerid) {
         this.frage = frage;
-        this.Antwort = antwort;
+        this.antwort = antwort;
         this.playerid = playerid;
     }
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getName() {
+    public String getFrage() {
         return frage;
     }
 
-    public void setName(String name) {
-        this.frage = name;
+    public void setFrage(String frage) {
+        this.frage = frage;
     }
-
     public String getAntwort() {
-        return Antwort;
+        return antwort;
     }
-
     public void setAntwort(String antwort) {
-        this.Antwort = antwort;
+        this.antwort = antwort;
     }
 
     public int getPlayerid() {
@@ -60,23 +55,23 @@ public class Frage {
 
         if (getAntwort() != frage.getAntwort()) return false;
         if (getId() != null ? !getId().equals(frage.getId()) : frage.getId() != null) return false;
-        return getName() != null ? getName().equals(frage.getName()) : frage.getName() == null;
+        return getFrage() != null ? getFrage().equals(frage.getFrage()) : frage.getFrage() == null;
     }
 
     @Override
     public int hashCode() {
         int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getFrage() != null ? getFrage().hashCode() : 0);
         result = 31 * result;
         return result;
     }
 
     @Override
     public String toString() {
-        return "Thing{" +
+        return "{" +
                 "id=" + id +
                 ", Frage='" + frage + '\'' +
-                ", Antwort=" + Antwort +
+                ", Antwort=" + antwort +
                 '}';
     }
 }

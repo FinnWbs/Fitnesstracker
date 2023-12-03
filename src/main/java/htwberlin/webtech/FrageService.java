@@ -33,7 +33,7 @@ public class FrageService {
 
     public Frage update(Long id, String frage, String antwort, int playerid) {
         Frage existingFrage = repo.findById(id).orElseThrow(() -> new RuntimeException("Frage nicht gefunden"));
-        existingFrage.setName(frage);
+        existingFrage.setFrage(frage);
         existingFrage.setAntwort(antwort);
         existingFrage.setPlayerid(playerid);
         return repo.save(existingFrage);

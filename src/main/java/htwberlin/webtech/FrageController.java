@@ -16,19 +16,19 @@ public class FrageController {
     Logger logger = LoggerFactory.getLogger(FrageController.class);
 
     @PostMapping("/frage")
-    public Frage createThing(@RequestBody Frage frage) {
+    public Frage createFrage(@RequestBody Frage frage) {
         return service.save(frage);
     }
 
     @GetMapping("/frage/{id}")
-    public Frage getThing(@PathVariable String id) {
+    public Frage getFrage(@PathVariable String id) {
         logger.info("GET request on route things with {}", id);
         Long frageID = Long.parseLong(id);
         return service.get(frageID);
     }
 
     @GetMapping("/frage")
-    public List<Frage> getAllThings() {
+    public List<Frage> getAllFragen() {
         return service.getAll();
     }
 
