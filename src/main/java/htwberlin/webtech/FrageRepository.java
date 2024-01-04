@@ -4,4 +4,4 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FrageRepository extends CrudRepository<Frage, Long> { }
+public interface FrageRepository extends CrudRepository<Game, Long> { }
