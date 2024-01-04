@@ -12,18 +12,18 @@ public class FrageService {
     @Autowired
     FrageRepository repo;
 
-    public Frage save(Frage frage) {
-        return repo.save(frage);
+    public Game save(Game game) {
+        return repo.save(game);
     }
 
-    public Frage get(Long id) {
+    public Game get(Long id) {
         return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
 
-    public List<Frage> getAll() {
-        Iterable<Frage> iterator = repo.findAll();
-        List<Frage> fragen = new ArrayList<Frage>();
-        for (Frage frage : iterator)  fragen.add(frage);
+    public List<Game> getAll() {
+        Iterable<Game> iterator = repo.findAll();
+        List<Game> fragen = new ArrayList<Game>();
+        for (Game game : iterator)  fragen.add(game);
         return fragen;
     }
 
@@ -31,11 +31,10 @@ public class FrageService {
         repo.deleteById(id);
     }
 
-    public Frage update(Long id, String frage, String antwort, int playerid) {
-        Frage existingFrage = repo.findById(id).orElseThrow(() -> new RuntimeException("Frage nicht gefunden"));
-        existingFrage.setFrage(frage);
-        existingFrage.setAntwort(antwort);
-        existingFrage.setPlayerid(playerid);
-        return repo.save(existingFrage);
+    public Game update(Long id, String name, String playerid) {
+        Game existingGame = repo.findById(id).orElseThrow(() -> new RuntimeException("Frage nicht gefunden"));
+        existingGame.setName(name);
+        existingGame.setPlayerid(playerid);
+        return repo.save(existingGame);
     }
 }
