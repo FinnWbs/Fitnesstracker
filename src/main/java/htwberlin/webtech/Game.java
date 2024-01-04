@@ -2,19 +2,23 @@ package htwberlin.webtech;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-    public class Game {
+public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String playerid;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "game_id")
+    private List<Spieler> players;
     public Game() {}
 
-    public Game(String name, String playerid) {
+    public Game(String name, List<Spieler>players) {
         this.name = name;
-        this.playerid = playerid;
+        this.players = players;
     }
     public Long getId() {
         return id;
@@ -26,16 +30,16 @@ import jakarta.persistence.*;
         return name;
     }
 
-    public void setName(String frage) {
-        this.name = frage;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPlayerid() {
-        return playerid;
+    public List<Spieler> getPlayers() {
+        return players;
     }
 
-    public void setPlayerid(String playerid) {
-        this.playerid = playerid;
+    public void setPlayers(List<Spieler> players) {
+        this.players = players;
     }
 
     @Override
@@ -51,17 +55,14 @@ import jakarta.persistence.*;
 
     @Override
     public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result;
-        return result;
+        return getId() != null ? getId().hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "{" +
                 "id=" + id +
-                ", Frage='" + name + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
