@@ -23,8 +23,8 @@ public class FrageController {
     @GetMapping("/game/{id}")
     public Game getFrage(@PathVariable String id) {
         logger.info("GET request on route things with {}", id);
-        Long frageID = Long.parseLong(id);
-        return service.get(frageID);
+        Long gameID = Long.parseLong(id);
+        return service.get(gameID);
     }
 
     @GetMapping("/game")

@@ -31,10 +31,10 @@ public class FrageService {
         repo.deleteById(id);
     }
 
-    public Game update(Long id, String name, String playerid) {
+    public Game update(Long id, String name, List<Spieler> playerid) {
         Game existingGame = repo.findById(id).orElseThrow(() -> new RuntimeException("Frage nicht gefunden"));
         existingGame.setName(name);
-        existingGame.setPlayerid(playerid);
+        existingGame.setPlayers(playerid);
         return repo.save(existingGame);
     }
 }
