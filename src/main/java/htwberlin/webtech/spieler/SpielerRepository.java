@@ -1,7 +1,7 @@
-package htwberlin.webtech;
+package htwberlin.webtech.spieler;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FrageRepository extends CrudRepository<Game, Long> { }
+public interface SpielerRepository extends CrudRepository<Spieler, Long> { }

@@ -1,27 +1,24 @@
-package htwberlin.webtech;
+package htwberlin.webtech.spieler;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
-public class GameService {
+public class SpielerService {
 
     @Autowired
-    FrageRepository repo;
+    SpielerRepository repo;
 
-    public Game save(Game game) {
-        return repo.save(game);
+    public Spieler createSpieler(String spielerName) {
+        Spieler newSpieler = new Spieler(spielerName);
+        return this.repo.save(newSpieler);
     }
 
-    public Game get(Long id) {
+    public Spieler get(Long id) {
         return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
 
-    public List<Game> getAll() {
+    /*public List<Game> getAll() {
         return Streamable.of(this.repo.findAll()).toList();
     }
 
@@ -35,6 +32,7 @@ public class GameService {
         existingGame.setPlayers(playerid);
         return repo.save(existingGame);
     }
+     */
 
 //    public Game join(String ){
 //

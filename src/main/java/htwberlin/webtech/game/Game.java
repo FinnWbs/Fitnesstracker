@@ -1,33 +1,37 @@
-package htwberlin.webtech;
+package htwberlin.webtech.game;
 
+import htwberlin.webtech.spieler.Spieler;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id")
-    private List<Spieler> players;
+    public Long id;
+    public String name;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    public List<Spieler> spieler;
     public Game() {}
 
-    public Game(String name, List<Spieler>players) {
-        this.name = name;
-        this.players = players;
+    public Game(String gameName, List<Spieler>players) {
+        this.name = gameName;
+        this.spieler = players;
     }
+
+/*
     public Long getId() {
-        return id;
+        return this.id;
     }
     public void setId(Long id) {
         this.id = id;
     }
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -35,7 +39,7 @@ public class Game {
     }
 
     public List<Spieler> getPlayers() {
-        return players;
+        return this.players;
     }
 
     public void setPlayers(List<Spieler> players) {
@@ -64,5 +68,5 @@ public class Game {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
-    }
+    }*/
 }
