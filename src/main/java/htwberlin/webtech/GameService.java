@@ -1,6 +1,7 @@
 package htwberlin.webtech;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,10 +22,7 @@ public class GameService {
     }
 
     public List<Game> getAll() {
-        Iterable<Game> iterator = repo.findAll();
-        List<Game> fragen = new ArrayList<Game>();
-        for (Game game : iterator)  fragen.add(game);
-        return fragen;
+        return Streamable.of(this.repo.findAll()).toList();
     }
 
     public void deleteById(Long id) {

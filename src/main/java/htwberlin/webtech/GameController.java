@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/game")
+@RestController()
+@RequestMapping("/game")
 public class GameController {
 
     @Autowired
@@ -15,21 +16,21 @@ public class GameController {
 
     Logger logger = LoggerFactory.getLogger(GameController.class);
 
-    @PostMapping("/game")
+    @PostMapping()
     public Game createGame(@RequestBody Game game) {
-        return service.save(game);
+        return this.service.save(game);
     }
 
-    @GetMapping("/game/{id}")
+    @GetMapping()
+    public List<Game> getAllFragen() {
+        return this.service.getAll();
+    }
+
+    @GetMapping("/{id}")
     public Game getFrage(@PathVariable String id) {
         logger.info("GET request on route things with {}", id);
         Long gameID = Long.parseLong(id);
         return service.get(gameID);
-    }
-
-    @GetMapping("/game")
-    public List<Game> getAllFragen() {
-        return service.getAll();
     }
 
 }
