@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class FrageService {
+public class GameService {
 
     @Autowired
     FrageRepository repo;
@@ -37,4 +37,8 @@ public class FrageService {
         existingGame.setPlayers(playerid);
         return repo.save(existingGame);
     }
+
+//    public Game join(String ){
+//
+//    }
 }

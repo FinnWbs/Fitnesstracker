@@ -7,25 +7,11 @@ public class Spieler {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String playerid;
+    public Long id;
+    public String playerName;
     public Spieler() {}
 
-    public Spieler(String playerid) {
-        this.playerid = playerid;
-    }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPlayerid() {
-        return playerid;
-    }
-
-    public void setPlayerid(String playerid) {
-        this.playerid = playerid;
+    public Spieler(String playerName) {
+        this.playerName = playerName;
     }
 }

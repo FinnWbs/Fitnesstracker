@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-public class FrageController {
+@RestController("/game")
+public class GameController {
 
     @Autowired
-    FrageService service;
+    GameService service;
 
-    Logger logger = LoggerFactory.getLogger(FrageController.class);
+    Logger logger = LoggerFactory.getLogger(GameController.class);
 
     @PostMapping("/game")
     public Game createGame(@RequestBody Game game) {
