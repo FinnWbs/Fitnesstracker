@@ -27,7 +27,7 @@ public class BackendTest {
     private GameService service;
 
     @MockBean
-    private SpielerRepository repo;
+    private GameRepository repo;
 
 
     @Test
