@@ -20,7 +20,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'junit:junit:4.13.1'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.h2database:h2:2.1.214'
+	runtimeOnly 'com.h2database:h2:2.2.220'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
 
@@ -32,6 +32,7 @@ dependencies {
 
 	// This dependency is used by the application.
 	implementation 'com.google.guava:guava:30.0-jre'
+	testImplementation 'com.h2database:h2-mvstore:2.1.214'
 }
 
 
