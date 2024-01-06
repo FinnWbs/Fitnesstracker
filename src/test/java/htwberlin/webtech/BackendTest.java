@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -33,8 +34,10 @@ public class BackendTest {
     @Test
     void testGetGame() {
         Spieler player = new Spieler("Fi nn");
-        Game game = new Game("Erstes Game", Collections.singletonList(player));
+        List<Spieler> list = new ArrayList<>();
+        list.add(player);
 
+        Game game = new Game("Erstes Game", list);
         doReturn(Optional.of(game)).when(repo).findById(1L);
 
         Game actualGame = service.getGameById(1L);
