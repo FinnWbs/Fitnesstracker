@@ -12,6 +12,15 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String name;
 
     @OneToMany(fetch = FetchType.EAGER)

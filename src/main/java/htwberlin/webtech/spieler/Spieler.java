@@ -12,6 +12,9 @@ public class Spieler {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+
+
+
     public String playerName;
 
     @ManyToOne
@@ -21,6 +24,15 @@ public class Spieler {
     public Spieler() {}
 
     public Spieler(String playerName) {
+        this.playerName = playerName;
+    }
+
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
 }
