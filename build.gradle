@@ -23,19 +23,15 @@ dependencies {
 	runtimeOnly 'com.h2database:h2:2.2.220'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+	testImplementation 'com.h2database:h2:2.2.220'
 
-	// Mockito for mocking dependencies
 	testImplementation 'org.mockito:mockito-core:3.9.0'
 
-	// Use JUnit Jupiter Engine for testing.
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-
-	// This dependency is used by the application.
 	implementation 'com.google.guava:guava:30.0-jre'
-	testImplementation 'com.h2database:h2-mvstore:2.1.214'
 }
 
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }
