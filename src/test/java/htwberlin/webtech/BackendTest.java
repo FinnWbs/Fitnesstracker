@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,19 +24,21 @@ public class BackendTest {
 
 
     @Autowired
-    private SpielerService service;
+    private GameService service;
 
     @MockBean
     private SpielerRepository repo;
 
 
     @Test
-    void testGet() {
-        var t1 = new Spieler("Fi nn");
-        doReturn(Optional.of(t1)).when(repo).findById(1L);
+    void testGetGame() {
+        Spieler player = new Spieler("Fi nn");
+        Game game = new Game("Erstes Game", Collections.singletonList(player));
 
-        Spieler actual = service.get(1L);
+        doReturn(Optional.of(game)).when(repo).findById(1L);
 
-        Assertions.assertEquals(actual.getPlayerName(), "Fi nn");
+        Game actualGame = service.getGameById(1L);
+
+        assertEquals(actualGame.getName(), "Erstes Game");
     }
 }
