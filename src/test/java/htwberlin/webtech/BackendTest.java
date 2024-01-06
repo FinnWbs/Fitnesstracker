@@ -42,6 +42,6 @@ public class BackendTest {
 
         Game actualGame = service.getGameById(1L);
 
-        assertEquals(actualGame.getName(), "Erstes Game2");
+        assertEquals(actualGame.getName(), "Erstes Game");
     }
 }
