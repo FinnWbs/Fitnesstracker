@@ -31,7 +31,6 @@ public class BackendTest {
 
     @Test
     void testGet() {
-        //Spieler sp = new Spieler("Fi nn");
         var t1 = new Spieler("Fi nn");
         doReturn(Optional.of(t1)).when(repo).findById(1L);
 
