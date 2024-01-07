@@ -1,3 +1,5 @@
+package htwberlin.webtech;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import htwberlin.webtech.game.CreateGameInput;
 import htwberlin.webtech.game.Game;
