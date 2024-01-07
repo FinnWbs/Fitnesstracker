@@ -32,50 +32,50 @@ public class Game {
         this.spieler = players;
     }
 
-/*
+
     public Long getId() {
         return this.id;
     }
     public void setId(Long id) {
         this.id = id;
     }
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Spieler> getPlayers() {
-        return this.players;
-    }
-
-    public void setPlayers(List<Spieler> players) {
-        this.players = players;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Game)) return false;
-
-        Game game = (Game) o;
-
-        if (getId() != null ? !getId().equals(game.getId()) : game.getId() != null) return false;
-        return getName() != null ? getName().equals(game.getName()) : game.getName() == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return getId() != null ? getId().hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return "{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }*/
+//    public String getName() {
+//        return this.name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public List<Spieler> getPlayers() {
+//        return this.players;
+//    }
+//
+//    public void setPlayers(List<Spieler> players) {
+//        this.players = players;
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Game)) return false;
+//
+//        Game game = (Game) o;
+//
+//        if (getId() != null ? !getId().equals(game.getId()) : game.getId() != null) return false;
+//        return getName() != null ? getName().equals(game.getName()) : game.getName() == null;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return getId() != null ? getId().hashCode() : 0;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                '}';
+//    }
 }

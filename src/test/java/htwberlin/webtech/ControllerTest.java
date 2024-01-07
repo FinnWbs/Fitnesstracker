@@ -38,6 +38,7 @@ public class ControllerTest {
         list.add(player);
 
         Game game = new Game("Erstes Game", list);
+        game.setId(1L);
         when(service.getGameById(1L)).thenReturn(game);
 
         String exp = "{\"id\":1,\"name\":\"Erstes Game\",\"spieler\":[{\"id\":1,\"playerName\":\"Fi nn\"}]}";
