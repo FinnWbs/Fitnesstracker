@@ -28,14 +28,17 @@ public class ControllerTest {
 
     @Test
     public void testGetGame() throws Exception {
+        // Mocking the gameService behavior
         Spieler spielErsteller = new Spieler("Player1");
         Game mockGame = new Game("TestGame", Collections.singletonList(spielErsteller));
         Mockito.when(gameService.getGameById(Mockito.anyLong())).thenReturn(mockGame);
 
+        // Perform the request and assert the response
         mockMvc.perform(MockMvcRequestBuilders.get("/game/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("TestGame"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.spieler[0].name").value("Player1"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.spieler[0].playerName").value("Player1"));
+
     }
 }
