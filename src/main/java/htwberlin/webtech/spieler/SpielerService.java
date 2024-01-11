@@ -14,8 +14,18 @@ public class SpielerService {
         return this.repo.save(newSpieler);
     }
 
-    public Spieler get(Long id) {
+    public Spieler getSpielerById(Long id) {
         return repo.findById(id).orElseThrow(() -> new RuntimeException());
+    }
+
+    public Spieler updatePunktzahl(Long id, Integer punktzahl){
+        Spieler spieler = this.repo.findById(id).orElseThrow(() -> new RuntimeException("Spieler nicht gefunden"));
+        spieler.setPunktzahl(punktzahl);
+        return this.repo.save(spieler);
+    }
+
+    public Spieler updateSpieler(Spieler spieler) {
+        return this.repo.save(spieler);
     }
 
     /*public List<Game> getAll() {

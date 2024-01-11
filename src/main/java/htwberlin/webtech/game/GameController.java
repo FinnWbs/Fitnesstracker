@@ -5,6 +5,7 @@ import htwberlin.webtech.spieler.SpielerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
@@ -16,6 +17,7 @@ public class GameController {
 
     @Autowired
     SpielerService spielerService;
+
 
     Logger logger = LoggerFactory.getLogger(GameController.class);
 
@@ -43,6 +45,25 @@ public class GameController {
         logger.info("GET request on route things with {}", id);
         Long gameID = Long.parseLong(id);
         return service.getGameById(gameID);
+    }
+
+    @GetMapping("/player/{id}")
+    public Spieler getSpieler(@PathVariable String id) {
+        logger.info("GET request on route things with {}", id);
+        Long SpielerID = Long.parseLong(id);
+        return spielerService.getSpielerById(SpielerID);
+    }
+    @PutMapping("/updateName/{id}")
+    public ResponseEntity<String> updateGameName(@PathVariable Long id, @RequestBody UpdateGameNameInput input) {
+        service.updateGameName(id, input.getName());
+        return ResponseEntity.ok("Game name updated successfully");
+    }
+
+
+    @PostMapping("/increaseScore/{id}")
+    public ResponseEntity<String> increaseScore(@PathVariable Long id, @RequestBody UpdatePunktzahlInput input) {
+        service.increaseScore(id, input.getPunktzahl());
+        return ResponseEntity.ok("Score increased successfully");
     }
 
     @DeleteMapping("/{id}")

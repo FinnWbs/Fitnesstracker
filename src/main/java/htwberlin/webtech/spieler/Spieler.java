@@ -21,13 +21,24 @@ public class Spieler {
     @JoinColumn
     private Game game;
 
+
+
+    public Integer punktzahl;
+
     public Spieler() {}
 
     public Spieler(String playerName) {
         this.playerName = playerName;
+        this.punktzahl = 0;
     }
 
+    public Integer getPunktzahl() {
+        return punktzahl;
+    }
 
+    public void setPunktzahl(Integer punktzahl) {
+        this.punktzahl = punktzahl;
+    }
     public String getPlayerName() {
         return playerName;
     }
