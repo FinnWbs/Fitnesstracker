@@ -12,18 +12,14 @@ public class Spieler {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-
-
-
     public String playerName;
-
+    public Integer punktzahl;
     @ManyToOne
     @JoinColumn
     private Game game;
 
 
 
-    public Integer punktzahl;
 
     public Spieler() {}
 

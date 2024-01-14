@@ -18,6 +18,10 @@ public class SpielerService {
         return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
 
+    public Spieler getSpielerByName(String spielerName) {
+        return this.repo.getSpielerByPlayerName(spielerName);
+    }
+
     public Spieler updatePunktzahl(Long id, Integer punktzahl){
         Spieler spieler = this.repo.findById(id).orElseThrow(() -> new RuntimeException("Spieler nicht gefunden"));
         spieler.setPunktzahl(punktzahl);
@@ -27,6 +31,19 @@ public class SpielerService {
     public Spieler updateSpieler(Spieler spieler) {
         return this.repo.save(spieler);
     }
+
+    public void increaseScore(Long playerId, int newPunktzahl) {
+        Spieler player = getSpielerById(playerId);
+        player.setPunktzahl(newPunktzahl);
+        repo.save(player);
+    }
+
+    public void increaseScoreByPlayerName(String Spielername) {
+        Spieler player = getSpielerByName(Spielername);
+        player.setPunktzahl(player.punktzahl+1);
+        repo.save(player);
+    }
+
 
     /*public List<Game> getAll() {
         return Streamable.of(this.repo.findAll()).toList();

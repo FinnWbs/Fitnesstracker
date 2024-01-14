@@ -2,7 +2,8 @@ package htwberlin.webtech.game;
 
 public class UpdatePunktzahlInput {
 
-    private int punktzahl;
+    public UpdatePunktzahlInput() {}
+    public int punktzahl;
 
     public int getPunktzahl() {
         return punktzahl;

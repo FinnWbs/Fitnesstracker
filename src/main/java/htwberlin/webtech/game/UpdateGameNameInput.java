@@ -1,7 +1,10 @@
 package htwberlin.webtech.game;
 
 public class UpdateGameNameInput {
-    private String name;
+
+    public UpdateGameNameInput() {}
+
+    public String name;
 
     public String getName() {
         return name;

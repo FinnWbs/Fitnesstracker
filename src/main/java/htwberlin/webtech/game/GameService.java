@@ -50,15 +50,11 @@ public class GameService {
         repo.save(game);
     }
 
-    public Spieler updatePunktzahl(Long playerId, int punktzahl) {
-        Spieler spieler = this.spielerService.getSpielerById(playerId);
-        spieler.setPunktzahl(punktzahl);
-        return this.spielerService.updateSpieler(spieler);
-    }
-
-    public void increaseScore(Long playerId, int newPunktzahl) {
-        Spieler player = spielerService.getSpielerById(playerId);
-        player.setPunktzahl(newPunktzahl);
-        spielerRepository.save(player);
+    public void updateCurrentQuestion(String currentQuestion, Long gameId, List<String> possibleAnswers, String givenSongName) {
+        Game game = this.getGameById(gameId);
+        game.setCurrentQuestion(currentQuestion);
+        game.setPossibleAnswers(possibleAnswers);
+        game.setGivenSongName(givenSongName);
+        this.repo.save(game);
     }
 }

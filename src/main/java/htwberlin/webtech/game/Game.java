@@ -25,6 +25,15 @@ public class Game {
 
     @OneToMany(fetch = FetchType.EAGER)
     public List<Spieler> spieler;
+
+    @Column(length = 1000)
+    public String currentQuestion;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    public List<String> possibleAnswers;
+
+    public String givenSongName;
+
     public Game() {}
 
     public Game(String gameName, List<Spieler>players) {
@@ -33,6 +42,28 @@ public class Game {
     }
 
 
+    public String getCurrentQuestion() {
+        return this.currentQuestion;
+    }
+    public void setCurrentQuestion(String currentQuestion) {
+        this.currentQuestion = currentQuestion;
+    }
+
+    public List<String> getPossibleAnswers() {
+        return possibleAnswers;
+    }
+
+    public void setPossibleAnswers(List<String> possibleAnswers) {
+        this.possibleAnswers = possibleAnswers;
+    }
+
+    public String getGivenSongName() {
+        return givenSongName;
+    }
+
+    public void setGivenSongName(String givenSongName) {
+        this.givenSongName = givenSongName;
+    }
     public Long getId() {
         return this.id;
     }
