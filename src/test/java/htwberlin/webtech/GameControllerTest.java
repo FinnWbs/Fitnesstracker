@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import htwberlin.webtech.game.CreateGameInput;
 import htwberlin.webtech.game.Game;
 import htwberlin.webtech.game.GameController;
+import htwberlin.webtech.game.JoinGameInput;
 import htwberlin.webtech.spieler.Spieler;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -30,7 +31,7 @@ public class GameControllerTest {
 
     @Test
     public void testCreateGame() throws Exception {
-        // Mocking the behavior of the GameController
+
         Spieler spielErsteller = new Spieler("Player1");
         CreateGameInput createGameInput = new CreateGameInput();
         createGameInput.gameName = "TestGame";
@@ -39,16 +40,27 @@ public class GameControllerTest {
         Mockito.when(gameController.createGame(Mockito.any(CreateGameInput.class)))
                 .thenReturn(mockGame);
 
-        // Convert CreateGameInput to JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonInput = objectMapper.writeValueAsString(createGameInput);
 
-        // Perform the request and assert the response
         mockMvc.perform(MockMvcRequestBuilders.post("/game")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonInput))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("TestGame"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.spieler[0].playerName").value("Player1"));
+    }
+
+
+    @Test
+    public void testDeleteGame() throws Exception {
+
+        Long gameId = 1L;
+        Mockito.doNothing().when(gameController).deleteGame(gameId);
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/game/{id}", gameId))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+        Mockito.verify(gameController, Mockito.times(1)).deleteGame(gameId);
     }
 }
